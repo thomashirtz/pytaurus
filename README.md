@@ -2,6 +2,10 @@
 
 Repository that provide a wrapper to use the software [Sentarurus TCAD](www.synopsys.com) with Python. 
 
+# Projects
+
+
+
 ## PLT Files
 
 This repository contains a very simple class to convert "plt" file to different formats such as dataframe, csv or dictionary. The class can be easily added to your project. This allows to efficiently process files coming from software such as [Sentarurus TCAD](www.synopsys.com). 
@@ -40,8 +44,6 @@ dictionary = plt_file.to_dict()
 print(dictionary)
 ```
 
-### Keys and Kwargs
-
 It is also possible to filter the wanted keys during the conversion
 ```
 keys = ['d_total_current', 'd_inner_voltage']
@@ -49,8 +51,9 @@ dictionary = plt_file.to_dict(keys=keys)
 print(dictionary)
 ```
 
-By default the keys in the files are in the form "D Total Current", however, to make the name more pythonic, they are converted by default to "d_total_current" (by replacing spaces by underscore and removing uppercase). It is possible to change the keys by modifing the kwargs `separator: str = '_'` and `lowercase: bool = True`
+### Keys and Kwargs
 
+By default the keys in the files are in the form "D Total Current", however, to make the name more pythonic, they are converted by default to "d_total_current" (by replacing spaces by underscore and removing uppercase). It is possible to change the keys by modifing the kwargs `separator: str = '_'` and `lowercase: bool = True`
 
 ## Requirements
 pandas  
