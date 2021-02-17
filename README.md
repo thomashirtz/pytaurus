@@ -2,9 +2,38 @@
 
 Repository that provide a wrapper to use the software [Sentarurus TCAD](www.synopsys.com) with Python. 
 
-# Projects
+## Projects
 
+### Basics
 
+Import the library and create an instance
+``` 
+from pytaurus import Project
+
+path = '/path/to/TCAD/project'
+project = Project(path)
+```
+
+### Running simulations
+
+Running a simple simulation:
+```
+exit_code = project.run()
+print(f'Project run with exit code {exit_code}')
+```
+
+It is also possible to choose the nodes to simulate by giving a list of integer:
+```
+exit_code = project.run(nodes=[1,2,3])
+print(f'Project run with exit code {exit_code}')
+```
+
+### Cleaning project
+
+```
+exit_code = project.clean()
+print(f'Project clean with exit code {exit_code}')
+```
 
 ## PLT Files
 
