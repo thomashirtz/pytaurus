@@ -1,0 +1,26 @@
+Usage: spp [options] (FILENAME | PROJECT)
+
+Description:
+  Preprocesses the given tool input file to stdout, or performs a global
+  preprocessing pass in a swb project.
+
+  Examples:
+    spp "BOR_IMPL_ENRGY=80" "N_DOSE=1e15" @STDB@/nmos,process/lig.cmd
+    spp -verbose @STDB@/nmos,process
+    spp -expr "scnr_name" @STDB@/nmos,process
+
+Options:
+  -h[elp]      : displays this help message
+  -v[ersion]   : displays version information
+  -verbose     : displays additional initialization and run-time information
+  -i[nput]     : generates all of the initial, preprocessed pp* files in project
+  -p[ack]      : does not generate empty lines while preprocessing
+  -n[odes]     : preprocess just these nodes
+  -e[xpr]      : preprocess based on an expression
+  -onlytcl     : preprocess only Tcl blocks in command files
+
+  "NAME=VALUE" : expands NAME reference to VALUE in text file
+
+Arguments:
+  FILENAME     : marked tool input file
+  PROJECT      : project directory

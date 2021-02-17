@@ -1,0 +1,29 @@
+Usage: gcleanup [options] PROJECT
+
+DESCRIPTION
+  Handy utility to clean up an SWB project
+
+  Example: gcleanup -default  @STDB@/nmos,process
+
+Options:
+  -h[elp]          : displays this help
+  -d[efault]       : applies default set of options (-pp, -sv, -res, -xv, -unlock, -orp, -back, -log)
+  -back            : removes backup files
+  -log             : removes log files
+  -orp             : deletes orphan nodes
+  -pp              : removes preprocessed files
+  -ren             : renumbers nodes in the project (automatically enables -pp, -sv, -xv, -res)
+  -res             : removes output files
+  -sv              : cleans up set variables
+  -xv              : cleans up extracted variables
+  -unlock          : resets the project status file
+  -n "node list"   : cleans up given nodes only
+  -v[ersion]       : displays version information
+  -verbose         : displays additional information
+  -f[ast]          : perform fast cleanup. Advised for big projects.
+                     WARNING: The original project directory will be removed and then recreated.
+                     It is highly recommended to close all other applications working with project files,
+                     in order to avoid unexpected errors or evel losses of data.
+
+Arguments:
+  PROJECT          : project directory

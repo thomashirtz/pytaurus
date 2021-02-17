@@ -1,0 +1,27 @@
+Usage: gsub [options] (FILENAME | PROJECT)
+
+DESCRIPTION
+  Submits specified nodes/jobs to batch system and waits for completion
+
+
+  Example: gsub -e all @STDB@/folder/project
+
+Options:
+  -h[elp]               : displays this help message
+  -v[ersion]            : displays version information
+  -verbose              : displays additional initialization and loading information
+  -e[xpr]  "GEXPR"      : nodes resulting from the GEXPR expression
+
+  -n[odes] [<scenario> | "<list of nodes>"]
+                        : remaining nodes in <scenario>, or given node numbers
+  -q[ueue] "queue name"
+                        : submits all the jobs to a queue
+  -max[Experiments] <number>
+                        : defines the maximum number of concurrently running experiments
+
+  -startTime <datetime> : start date and time of the submission,
+                          format: "mm/dd/yyyy hh:mm:ss AM|PM" (default: immediately)
+
+Arguments:
+  FILENAME         : text file defining a list of jobs
+  PROJECT          : project directory

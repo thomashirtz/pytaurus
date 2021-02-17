@@ -1,0 +1,18 @@
+Usage: gjob [options] -job NAME (FILENAME | PROJECT)
+
+Description:
+  Runs the given job, or project's node locally
+
+  Example: gjob -job 2 @STDB@/folder/project
+
+Options:
+  -h[elp]        : displays this help message
+  -v[ersion]     : displays version information
+  -verbose       : displays additional initialization and run-time information
+  -p[ack]        : does not generate empty lines while preprocessing
+  -nice NUMBER   : job scheduling priority
+
+Arguments:
+  -j[ob] NAME    : job name, or node number
+  FILENAME       : text file defining jobs, or
+  PROJECT        : project directory
