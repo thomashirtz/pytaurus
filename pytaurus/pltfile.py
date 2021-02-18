@@ -1,7 +1,8 @@
-from collections import defaultdict
-from typing import Dict, Optional
-import pandas as pd
+import re
 import csv
+import pandas as pd
+from typing import Dict, Optional
+from collections import defaultdict
 
 
 class PLTFile:
@@ -29,7 +30,7 @@ class PLTFile:
             writer.writerow(keys)
             writer.writerows(zip(*[dictionary[key] for key in keys]))
 
-    def _get_dictionary(self, keys: Optional[list] = None, **kwargs) -> Dict:  # todo add kwarg
+    def _get_dictionary(self, keys: Optional[list] = None, **kwargs) -> Dict:
         data = self.read_file(self.path)
         dictionary = self._process_data(data, **kwargs)
         if not keys:
@@ -37,14 +38,14 @@ class PLTFile:
         return {key: dictionary[key] for key in keys}
 
     @staticmethod
-    def _process_data(data: str, separator='_', lowercase=True) -> Dict[str, list]:
-        keys = data.replace(' ', '').split('datasets=[')[1].split(']')[0].split('"')[1::2]
+    def _process_data(data: str, snake_case: bool = True) -> Dict[str, list]:
+        keys = re.findall(r'"([a-zA-Z0-9 .]+)"', data)
         values = data.split('Data {      ')[1].split('}')[0].split()
 
-        def reformat_name(string: str, separator: str, lowercase: bool) -> str:
-            name = ''.join([separator + char.lower() if char.isupper() and lowercase else char for char in string])
-            return name.lstrip(separator)
-        keys = [reformat_name(key, separator, lowercase) for key in keys]
+        if snake_case:
+            def get_snake_case(s):
+                return ''.join(['_' + c.lower() if c.isupper() else c for c in s.replace(" ", "")]).lstrip('_')
+            keys = [get_snake_case(key) for key in keys]
 
         d = defaultdict(list)
         for i, value in enumerate(values):
