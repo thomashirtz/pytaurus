@@ -84,6 +84,10 @@ print(dictionary)
 
 By default the keys in the files are in the form "D Total Current", however, to make the name more pythonic, they are converted by default to "d_total_current" (by replacing spaces by underscore and removing uppercase). It is possible to change the keys by modifing the kwargs `separator: str = '_'` and `lowercase: bool = True`
 
+## todo
+
+- Better management of cmd arguments with dict
+
 ## Requirements
 pandas  
 
