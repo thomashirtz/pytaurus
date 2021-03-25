@@ -35,6 +35,38 @@ exit_code = project.clean()
 print(f'Project clean with exit code {exit_code}')
 ```
 
+### Custom environment
+
+When remotely calling subprocess call, it can happen that issue related to the environment variable arise. 
+
+such error include and are not limited to:
+```
+Job failed
+Error: set ISEDB environment variable 
+gjob exits with status 1
+```
+
+If such error arises, it is possible to manually set needed environment variables for the smooth running of the 
+simulation.
+```
+from pytaurus import Project
+
+path = '/path/to/TCAD/project'
+project = Project(path)
+
+tcad_path = '/usr/synopsys/L_2016/bin'
+scl_path = '/usr/synopsys/SCL/linux64/bin'
+license_path = '/usr/synopsys/SCL/admin/license/license.dat'
+stdb_path = '/home/user/STDB'
+
+project.set_environment(tcad_path=tcad_path, 
+                        scl_path=scl_path, 
+                        license_path=license_path, 
+                        stdb_path=stdb_path)
+                        
+exit_code = project.run()
+```
+
 ## PLT Files
 
 This repository contains a very simple class to convert "plt" file to different formats such as dataframe, csv or dictionary. The class can be easily added to your project. This allows to efficiently process files coming from software such as [Sentarurus TCAD](www.synopsys.com). 
