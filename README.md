@@ -68,8 +68,7 @@ exit_code = project.run()
 ```
 
 **Note:** When calling subprocess, the argument `shell` is set to `True`. It does implicate [security considerations](https://docs.python.org/3/library/subprocess.html#security-considerations)
-even if this argument is needed for running simulation (When `shell` is set to `False`, there are issues with environment variables,  
-moreover, it is impossible to use a custom environment if the shell is not invoked)
+even if this argument is needed for running simulation (When `shell` is set to `False`, there are issues with environment variables, moreover, it is impossible to use a custom environment if the shell is not invoked)
 
 ## PLT Files
 
