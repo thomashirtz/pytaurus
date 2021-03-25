@@ -67,6 +67,10 @@ project.set_environment(tcad_path=tcad_path,
 exit_code = project.run()
 ```
 
+**Note:** When calling subprocess, the argument `shell` is set to `True`. It does implicate [security considerations](https://docs.python.org/3/library/subprocess.html#security-considerations)
+even if this argument is needed for running simulation (When `shell` is set to `False`, there are issues with environment variables,  
+moreover, it is impossible to use a custom environment if the shell is not invoked)
+
 ## PLT Files
 
 This repository contains a very simple class to convert "plt" file to different formats such as dataframe, csv or dictionary. The class can be easily added to your project. This allows to efficiently process files coming from software such as [Sentarurus TCAD](www.synopsys.com). 

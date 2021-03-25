@@ -39,7 +39,6 @@ class Project:
         custom_env = os.environ.copy()
         custom_env["PATH"] = tcad_path + ":" + custom_env["PATH"]
         custom_env["PATH"] = scl_path + ":" + custom_env["PATH"]
-
         custom_env["STDB"] = stdb_path
         custom_env["LM_LICENSE_FILE"] = license_path
         custom_env["SNPSLMD_LICENSE_FILE"] = license_path
