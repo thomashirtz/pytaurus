@@ -1,6 +1,6 @@
 # pytaurus
 
-Repository that provide a wrapper to use the software [Sentarurus TCAD](www.synopsys.com) with Python. 
+Repository that provide a wrapper to use the software [Sentaurus TCAD](www.synopsys.com) with Python. 
 
 ## Projects
 
@@ -82,7 +82,7 @@ print(dictionary)
 
 ### Keys and Kwargs
 
-By default the keys in the files are in the form "D Total Current", however, to make the name more pythonic, they are converted by default to "d_total_current" (by replacing spaces by underscore and removing uppercase). It is possible to change the keys by modifing the kwargs `separator: str = '_'` and `lowercase: bool = True`
+By default, the keys in the files are in the form "D Total Current", however, to make the name more pythonic, they are converted by default to snake case ex: "d_total_current" (by replacing spaces by underscore and removing uppercase). The `snake_case` argument allows to enable and disable this feature (`True` by default).
 
 ## todo
 
