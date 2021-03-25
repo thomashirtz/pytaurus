@@ -5,7 +5,7 @@ import subprocess
 class Project:
     def __init__(self, path: str):
         self.path = path
-        self.custom_env = None
+        self.custom_environment = None
 
 
     def run(self, nodes: Optional[List[int]] = None, display_output: bool = False):
@@ -28,6 +28,7 @@ class Project:
 
     @staticmethod
     def execute_cmd(cmd: str, display_output: bool = False, custom_environment: Optional[dict] = None):
+        custom_environment = custom_environment or self.custom_environment
         stdout = None if display_output else subprocess.DEVNULL
         return subprocess.call([cmd], shell=True, stdout=stdout, env=custom_environment)
 
@@ -36,10 +37,10 @@ class Project:
         return ' '.join(map(str, nodes))
 
     def set_environment(self, tcad_path, scl_path, license_path, stdb_path):
-        custom_env = os.environ.copy()
-        custom_env["PATH"] = tcad_path + ":" + custom_env["PATH"]
-        custom_env["PATH"] = scl_path + ":" + custom_env["PATH"]
-        custom_env["STDB"] = stdb_path
-        custom_env["LM_LICENSE_FILE"] = license_path
-        custom_env["SNPSLMD_LICENSE_FILE"] = license_path
-        self.custom_env = custom_env
+        env = os.environ.copy()
+        env["PATH"] = tcad_path + ":" + env["PATH"]
+        env["PATH"] = scl_path + ":" + env["PATH"]
+        env["STDB"] = stdb_path
+        env["LM_LICENSE_FILE"] = license_path
+        env["SNPSLMD_LICENSE_FILE"] = license_path
+        self.custom_environment = env
