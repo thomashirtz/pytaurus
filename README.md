@@ -1,5 +1,6 @@
 # pytaurus
-Repository that provide a wrapper to use the software [Sentaurus TCAD](www.synopsys.com) with Python. 
+Repository that provide a wrapper to use the software [Sentaurus TCAD](www.synopsys.com) with Python. <img align="right" width="350"  src="finfet.png"> 
+
 
 ## Projects
 
