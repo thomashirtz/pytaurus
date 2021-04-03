@@ -1,5 +1,6 @@
-from typing import List, Optional
+import os
 import subprocess
+from typing import List, Optional
 
 
 class Project:
@@ -7,14 +8,14 @@ class Project:
         self.path = path
         self.custom_environment = None
 
-
-    def run(self, nodes: Optional[List[int]] = None, display_output: bool = False):
+    def gsub(self, nodes: Optional[List[int]] = None, display_output: bool = False, environment: Optional[dict] = None):
         cmd = self.get_gsub_cmd(nodes)
-        return self.execute_cmd(cmd, display_output)
+        return self.execute_cmd(cmd, display_output, environment)
 
-    def clean(self, nodes: Optional[List[int]] = None, renumbers_nodes: bool = False, display_output: bool = False):
+    def gcleanup(self, nodes: Optional[List[int]] = None, renumbers_nodes: bool = False, display_output: bool = False,
+                 environment: Optional[dict] = None):
         cmd = self.get_gcleanup_cmd(nodes, renumbers_nodes)
-        return self.execute_cmd(cmd, display_output)
+        return self.execute_cmd(cmd, display_output, environment)
 
     def get_gsub_cmd(self, nodes: Optional[List[int]] = None):
         arguments = f'-n {self.get_nodes(nodes)}' if nodes else '-e all'
@@ -26,8 +27,7 @@ class Project:
         arguments = f'-n {self.get_nodes(nodes)} ' if nodes else ''
         return f'gsub {arguments} {self.path}'
 
-    @staticmethod
-    def execute_cmd(cmd: str, display_output: bool = False, custom_environment: Optional[dict] = None):
+    def execute_cmd(self, cmd: str, display_output: bool = False, custom_environment: Optional[dict] = None):
         custom_environment = custom_environment or self.custom_environment
         stdout = None if display_output else subprocess.DEVNULL
         return subprocess.call([cmd], shell=True, stdout=stdout, env=custom_environment)
