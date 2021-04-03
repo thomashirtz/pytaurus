@@ -16,19 +16,19 @@ project = Project(path)
 ### Running simulations
 Running a simple simulation:
 ```python
-exit_code = project.run()
+exit_code = project.gsub()
 print(f'Project run with exit code {exit_code}')
 ```
 
 It is also possible to choose the nodes to simulate by giving a list of integer:
 ```python
-exit_code = project.run(nodes=[1,2,3])
+exit_code = project.gsub(nodes=[1,2,3])
 print(f'Project run with exit code {exit_code}')
 ```
 
 ### Cleaning project
 ```python
-exit_code = project.clean()
+exit_code = project.gcleanup()
 print(f'Project clean with exit code {exit_code}')
 ```
 
@@ -60,7 +60,16 @@ project.set_environment(tcad_path=tcad_path,
                         license_path=license_path, 
                         stdb_path=stdb_path)
                         
-exit_code = project.run()
+exit_code = project.gsub()
+```
+The environment can also be passed directly when creating the instance:
+```python
+project = Project(path, environment=custom_environment)
+```
+Or when cleaning or running the project:
+```python
+gsub_exit_code = project.gsub(environment=custom_environment)
+gclean_exit_code = project.gcleanup(environment=custom_environment)
 ```
 
 **Note:** When calling subprocess, the argument `shell` is set to `True`. It does implicate [security considerations](https://docs.python.org/3/library/subprocess.html#security-considerations)
