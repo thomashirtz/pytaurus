@@ -4,18 +4,23 @@ from typing import List, Optional
 
 
 class Project:
-    def __init__(self, path: str):
+    def __init__(self, path: str, environment: Optional[dict] = None):
         self.path = path
-        self.custom_environment = None
+        self.custom_environment = environment
 
     def gsub(self, nodes: Optional[List[int]] = None, display_output: bool = False, environment: Optional[dict] = None):
         cmd = self.get_gsub_cmd(nodes)
         return self.execute_cmd(cmd, display_output, environment)
 
-    def gcleanup(self, nodes: Optional[List[int]] = None, renumbers_nodes: bool = False, display_output: bool = False,
-                 environment: Optional[dict] = None):
+    def run(self, nodes: Optional[List[int]] = None, display_output: bool = False, environment: Optional[dict] = None):
+        return self.gsub(nodes, display_output, environment)
+
+    def gcleanup(self, nodes: Optional[List[int]] = None, renumbers_nodes: bool = False, display_output: bool = False, environment: Optional[dict] = None):
         cmd = self.get_gcleanup_cmd(nodes, renumbers_nodes)
         return self.execute_cmd(cmd, display_output, environment)
+
+    def clean(self, nodes: Optional[List[int]] = None, renumbers_nodes: bool = False, display_output: bool = False, environment: Optional[dict] = None):
+        return self.gcleanup(nodes, renumbers_nodes, display_output, environment)
 
     def get_gsub_cmd(self, nodes: Optional[List[int]] = None):
         arguments = f'-n {self.get_nodes(nodes)}' if nodes else '-e all'
