@@ -22,14 +22,14 @@ print(f'Project run with exit code {exit_code}')
 
 It is also possible to choose the nodes to simulate by giving a list of integer:
 ```python
-exit_code = project.gsub(nodes=[1,2,3])
-print(f'Project run with exit code {exit_code}')
+exit_code = project.gsub(nodes=[1, 2, 3])
+print(f'Project ran with exit code {exit_code}')
 ```
 
 ### Cleaning project
 ```python
 exit_code = project.gcleanup()
-print(f'Project clean with exit code {exit_code}')
+print(f'Project cleaned with exit code {exit_code}')
 ```
 
 ### Custom environment
