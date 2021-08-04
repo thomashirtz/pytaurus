@@ -52,10 +52,12 @@ scl_path = '/usr/synopsys/SCL/linux64/bin'
 license_path = '/usr/synopsys/SCL/admin/license/license.dat'
 stdb_path = '/home/user/STDB'
 
-project.set_environment(tcad_path=tcad_path, 
-                        scl_path=scl_path, 
-                        license_path=license_path, 
-                        stdb_path=stdb_path)
+project.set_environment(
+    tcad_path=tcad_path,
+    scl_path=scl_path, 
+    license_path=license_path, 
+    stdb_path=stdb_path
+)
                         
 exit_code = project.gsub()
 ```
