@@ -119,12 +119,6 @@ print(dictionary)
 ### Keys and Kwargs
 By default, the keys in the files are in the form "D Total Current", however, to make the name more pythonic, they are converted by default to snake case ex: "d_total_current" (by replacing spaces by underscore and removing uppercase). The `snake_case` argument allows to enable and disable this feature (`True` by default).
 
-## todo
-- Better management of arguments
-
-## Requirements
-pandas  
-
 ## Installation
 This library contains only few helper functions. It is therefore possible to integrate it directly in the project. 
 Otherwise, the command to install the repository via pip is:
