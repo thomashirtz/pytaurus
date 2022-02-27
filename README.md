@@ -120,7 +120,7 @@ print(dictionary)
 By default, the keys in the files are in the form "D Total Current", however, to make the name more pythonic, they are converted by default to snake case ex: "d_total_current" (by replacing spaces by underscore and removing uppercase). The `snake_case` argument allows to enable and disable this feature (`True` by default).
 
 ## Installation
-This library contains only few helper functions. It is therefore possible to integrate it directly in the project. 
+This library contains only a few helper functions. It is therefore possible to integrate them directly in your project. 
 Otherwise, the command to install the repository via pip is:
 ```python
 pip install git+https://github.com/thomashirtz/pytaurus#egg=pytaurus
