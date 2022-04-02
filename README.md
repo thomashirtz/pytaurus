@@ -17,19 +17,16 @@ project = Project(path)
 Running a simple simulation:
 ```python
 exit_code = project.gsub()
-print(f'Project run with exit code {exit_code}')
 ```
 
 It is also possible to choose the nodes to simulate by giving a list of integer:
 ```python
-exit_code = project.gsub(nodes=[1,2,3])
-print(f'Project run with exit code {exit_code}')
+exit_code = project.gsub(nodes=[1, 2, 3])
 ```
 
 ### Cleaning project
 ```python
 exit_code = project.gcleanup()
-print(f'Project clean with exit code {exit_code}')
 ```
 
 ### Custom environment
@@ -55,10 +52,12 @@ scl_path = '/usr/synopsys/SCL/linux64/bin'
 license_path = '/usr/synopsys/SCL/admin/license/license.dat'
 stdb_path = '/home/user/STDB'
 
-project.set_environment(tcad_path=tcad_path, 
-                        scl_path=scl_path, 
-                        license_path=license_path, 
-                        stdb_path=stdb_path)
+project.set_environment(
+    tcad_path=tcad_path,
+    scl_path=scl_path, 
+    license_path=license_path, 
+    stdb_path=stdb_path
+)
                         
 exit_code = project.gsub()
 ```
@@ -120,15 +119,27 @@ print(dictionary)
 ### Keys and Kwargs
 By default, the keys in the files are in the form "D Total Current", however, to make the name more pythonic, they are converted by default to snake case ex: "d_total_current" (by replacing spaces by underscore and removing uppercase). The `snake_case` argument allows to enable and disable this feature (`True` by default).
 
-## todo
-- Better management of arguments
-
-## Requirements
-pandas  
-
 ## Installation
-This library contains only few helper functions. It is therefore possible to integrate it directly in the project. 
+This library contains only a few helper functions. It is therefore possible to integrate them directly in your project. 
 Otherwise, the command to install the repository via pip is:
 ```python
 pip install git+https://github.com/thomashirtz/pytaurus#egg=pytaurus
 ```
+
+## License
+
+     Copyright 2021 Thomas Hirtz
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+
+
