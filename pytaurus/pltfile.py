@@ -1,16 +1,18 @@
-import re
 import csv
-import pandas as pd
-from typing import Dict, Optional
+import re
 from collections import defaultdict
+from typing import Dict
+from typing import Optional
+
+import pandas as pd
 
 
 class PLTFile:
     def __init__(self, path):
-        self.path = path
+        self._path = path
 
     def get_keys(self, **kwargs) -> list:
-        data = self.read_file(self.path)
+        data = self._read_file(self._path)
         dictionary = self._process_data(data, **kwargs)
         return list(dictionary.keys())
 
@@ -25,13 +27,13 @@ class PLTFile:
         dictionary = self._get_dictionary(keys, **kwargs)
 
         keys = dictionary.keys()
-        with open(csv_file, "wb") as outfile:
-            writer = csv.writer(outfile, delimiter="\t")
+        with open(csv_file, 'wb') as outfile:
+            writer = csv.writer(outfile, delimiter='\t')
             writer.writerow(keys)
             writer.writerows(zip(*[dictionary[key] for key in keys]))
 
     def _get_dictionary(self, keys: Optional[list] = None, **kwargs) -> Dict:
-        data = self.read_file(self.path)
+        data = self._read_file(self._path)
         dictionary = self._process_data(data, **kwargs)
         if not keys:
             return dictionary
@@ -44,7 +46,7 @@ class PLTFile:
 
         if snake_case:
             def get_snake_case(s):
-                return ''.join(['_' + c.lower() if c.isupper() else c for c in s.replace(" ", "")]).lstrip('_')
+                return ''.join(['_' + c.lower() if c.isupper() else c for c in s.replace(' ', '')]).lstrip('_')
             keys = [get_snake_case(key) for key in keys]
 
         d = defaultdict(list)
@@ -54,7 +56,7 @@ class PLTFile:
         return dict(d)
 
     @staticmethod
-    def read_file(path):
-        with open(path, 'r') as f:
+    def _read_file(path):
+        with open(path) as f:
             data = f.read().replace('\n', '')
         return data

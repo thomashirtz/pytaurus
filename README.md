@@ -1,5 +1,5 @@
 # pytaurus
-Repository that provide a wrapper to use the software [Sentaurus TCAD](www.synopsys.com) with Python. <img align="right" width="350"  src="finfet.png"> 
+Repository that provide a wrapper to use the software [Sentaurus TCAD](www.synopsys.com) with Python. <img align="right" width="350"  src="finfet.png">
 
 
 ## Projects
@@ -30,16 +30,16 @@ exit_code = project.gcleanup()
 ```
 
 ### Custom environment
-When remotely calling subprocess call, it can happen that issue related to the environment variable arise. 
+When remotely calling subprocess call, it can happen that issue related to the environment variable arise.
 
 such error include and are not limited to:
 ```
 Job failed
-Error: set ISEDB environment variable 
+Error: set ISEDB environment variable
 gjob exits with status 1
 ```
 
-If such error arises, it is possible to manually set needed environment variables for the smooth running of the 
+If such error arises, it is possible to manually set needed environment variables for the smooth running of the
 simulation.
 ```python
 from pytaurus import Project
@@ -54,11 +54,11 @@ stdb_path = '/home/user/STDB'
 
 project.set_environment(
     tcad_path=tcad_path,
-    scl_path=scl_path, 
-    license_path=license_path, 
+    scl_path=scl_path,
+    license_path=license_path,
     stdb_path=stdb_path
 )
-                        
+
 exit_code = project.gsub()
 ```
 The environment can also be passed directly when creating the instance:
@@ -75,7 +75,7 @@ gclean_exit_code = project.gcleanup(environment=custom_environment)
 even if this argument is needed for running simulation (When `shell` is set to `False`, there are issues with environment variables, moreover, it is impossible to use a custom environment if the shell is not invoked)
 
 ## PLT Files
-This repository contains a very simple class to convert "plt" file to different formats such as dataframe, csv or dictionary. The class can be easily added to your project. This allows to efficiently process files coming from software such as [Sentarurus TCAD](www.synopsys.com). 
+This repository contains a very simple class to convert "plt" file to different formats such as dataframe, csv or dictionary. The class can be easily added to your project. This allows to efficiently process files coming from software such as [Sentarurus TCAD](www.synopsys.com).
 
 A raw plt file is also provided to test the script. The file was downloaded from the [National Tsinghua University website](http://semiconductorlab.iwopop.com/). It is part of the [3D TCAD Simulation for CMOS Nanoeletronic Devices](https://www.springer.com/gp/book/9789811030659) book.
 
@@ -104,7 +104,7 @@ print(dataframe)
 path_csv_file = 'file.csv'
 plt_file.to_csv(path_csv_file)
 
-# Dictionary 
+# Dictionary
 dictionary = plt_file.to_dict()
 print(dictionary)
 ```
@@ -120,7 +120,7 @@ print(dictionary)
 By default, the keys in the files are in the form "D Total Current", however, to make the name more pythonic, they are converted by default to snake case ex: "d_total_current" (by replacing spaces by underscore and removing uppercase). The `snake_case` argument allows to enable and disable this feature (`True` by default).
 
 ## Installation
-This library contains only a few helper functions. It is therefore possible to integrate them directly in your project. 
+This library contains only a few helper functions. It is therefore possible to integrate them directly in your project.
 Otherwise, the command to install the repository via pip is:
 ```python
 pip install git+https://github.com/thomashirtz/pytaurus#egg=pytaurus
@@ -141,5 +141,3 @@ pip install git+https://github.com/thomashirtz/pytaurus#egg=pytaurus
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
-
-
