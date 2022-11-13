@@ -59,11 +59,11 @@ class Project:
             renumbers_nodes: bool = False,
             verbose: bool = False,
     ) -> str:
-        verbose = ' -verbose' if verbose else ''
+        verbose_str = ' -verbose' if verbose else ''
         if renumbers_nodes:
-            return f'gcleanup -ren {self._path} {verbose}'
+            return f'gcleanup -ren {self._path} {verbose_str}'
         scope = f'-n {self._get_nodes(nodes)} ' if nodes else ''
-        command = ' '.join(['gcleanup', scope, verbose, self._path])
+        command = ' '.join(['gcleanup', scope, verbose_str, self._path])
         return command
 
     def get_gsub_cmd(
@@ -72,8 +72,8 @@ class Project:
             verbose: bool = False,
     ) -> str:
         scope = f'-n {self._get_nodes(nodes)}' if nodes else '-e all'
-        verbose = ' -verbose' if verbose else ''
-        command = ' '.join(['gsub', scope, verbose, self._path])
+        verbose_str = ' -verbose' if verbose else ''
+        command = ' '.join(['gsub', scope, verbose_str, self._path])
         return command
 
     def _execute_cmd(
