@@ -126,6 +126,23 @@ Otherwise, the command to install the repository via pip is:
 pip install git+https://github.com/thomashirtz/pytaurus#egg=pytaurus
 ```
 
+## Citation
+
+If you use this software in your research, please cite of the article that leads to this tool :)
+
+```
+@article{hirtz2021framework,
+  title={Framework for TCAD augmented machine learning on multi-I--V characteristics using convolutional neural network and multiprocessing},
+  author={Hirtz, Thomas and Huurman, Steyn and Tian, He and Yang, Yi and Ren, Tian-Ling},
+  journal={Journal of Semiconductors},
+  volume={42},
+  number={12},
+  pages={124101},
+  year={2021},
+  publisher={IOP Publishing}
+}
+```
+
 ## License
 
      Copyright 2021 Thomas Hirtz
