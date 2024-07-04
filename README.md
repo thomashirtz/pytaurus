@@ -128,7 +128,7 @@ pip install git+https://github.com/thomashirtz/pytaurus#egg=pytaurus
 
 ## Citation
 
-If you use this software in your research, please cite of the article that leads to this tool :)
+If you use this software in your research, please cite article that led to the creation of this tool :)
 
 ```
 @article{hirtz2021framework,
